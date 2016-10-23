@@ -21428,7 +21428,7 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var Faces = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Faces.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var Faces = __webpack_require__(173);
 
 	var GameBox = React.createClass({
 	  displayName: 'GameBox',
@@ -21452,6 +21452,47 @@
 	});
 
 	module.exports = GameBox;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Faces = React.createClass({
+	  displayName: 'Faces',
+
+	  getRandomFace: function getRandomFace(array) {
+	    for (var i = array.length - 1; i > 0; i--) {
+	      var j = Math.floor(Math.random() * (i + 1));
+	      var temp = array[i];
+	      array[i] = array[j];
+	      array[j] = temp;
+	    }
+	    return array;
+	  },
+
+	  render: function render() {
+	    var randomisedArray = getRandomFace(this.props.faces);
+	    console.log(this);
+	    var picture = randomisedArray[0].pic;
+
+	    // var img = this.props.faces.map(function(faces, index) {
+	    //   return <img key={index} value={index}>{this.props.faces.pic}</img>
+	    //   console.log(this)
+	    // })
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      picture
+	    );
+	  }
+	});
+
+	module.exports = Faces;
 
 /***/ }
 /******/ ]);
