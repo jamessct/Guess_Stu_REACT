@@ -12,19 +12,19 @@ var Faces = React.createClass({
   },
 
   render: function() {
-    // var randomisedArray = getRandomFace(this.props.faces);
-    // console.log(this)
-    // var picture = randomisedArray[0].pic;
-    // }
+    var randomisedArray = getRandomFace(this.props.faces);
+    console.log(this)
+    var picture = randomisedArray[0].pic;
+    }
 
-    var img = this.props.faces.map(function(faces, index) {
-      return <img key={index} value={index}>{this.props.faces.pic}</img>
-      console.log(this)
+    // var img = this.props.faces.map(function(faces, index) {
+    //   return <img key={index} value={index}>{this.props.faces.pic}</img>
+    //   console.log(this)
     })
 
     return (
       <div>
-        {img}
+        {picture}
       </div>
     )
   }
