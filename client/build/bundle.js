@@ -21436,7 +21436,7 @@
 	  displayName: 'GameBox',
 
 	  getInitialState: function getInitialState() {
-	    return { faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), name: 'Al' }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Al' }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), name: 'Stu' }, { id: 4, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Stu' }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), name: 'Stu' }] };
+	    return { faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), name: 'Al' }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Al' }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), name: 'Stu' }, { id: 4, pic: React.createElement('img', { src: '/public/images/Stu2.jpg' }), name: 'Stu' }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), name: 'Stu' }] };
 	  },
 
 	  render: function render() {
@@ -21450,7 +21450,7 @@
 	      ),
 	      React.createElement(Faces, { faces: this.state.faces }),
 	      React.createElement(Buttons, { faces: this.state.faces }),
-	      React.createElement(Result, null)
+	      React.createElement(Result, { faces: this.state.faces })
 	    );
 	  }
 	});
@@ -21506,18 +21506,27 @@
 	  displayName: 'Buttons',
 
 	  guessStu: function guessStu(event) {
-	    if (this.props.faces.stu === true) {
-	      return "Well done, it is Stuart!";
-	    } else return null;
+	    if (this.props.faces.name === 'Stu') {
+	      return true;
+	    } else return false;
+	    result('');
 	  },
 
 	  alWho: function alWho(event) {
-	    if (this.props.faces.stu === false) {
-	      return "Correct, this is indeed Alan!";
+	    if (this.props.faces.name === 'Al') {
+	      return true;
+	    } else return false;
+	    result();
+	  },
+
+	  result: function result() {
+	    if (this.guessStu() === true || this.alWho() === true) {
+	      return "Correct! The correct answer is " + this.props.faces.name;
 	    } else return null;
 	  },
 
 	  render: function render() {
+	    console.log(this.result());
 	    return React.createElement(
 	      'div',
 	      null,
@@ -21530,6 +21539,11 @@
 	        'button',
 	        { id: 'al', onClick: this.alWho },
 	        'Al'
+	      ),
+	      React.createElement(
+	        'p',
+	        null,
+	        this.result()
 	      )
 	    );
 	  }
@@ -21553,7 +21567,12 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement('p', null)
+	      React.createElement(
+	        'p',
+	        null,
+	        this.guessStu,
+	        this.alWho
+	      )
 	    );
 	  }
 	});

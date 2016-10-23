@@ -5,7 +5,7 @@ var Result = React.createClass({
     console.log(this)
     return (
       <div>
-        <p></p>
+        <p>{this.guessStu}{this.alWho}</p>
       </div>
     )
   }
