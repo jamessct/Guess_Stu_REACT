@@ -1,13 +1,21 @@
 body {
   background-image: url('http://i.imgur.com/ITfssQa.jpg');
-  background-size: 75px;
+  background-size: 76px;
 }
 
 h1 {
   color: #D81159;
   font-size: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left:350px;
+  margin-right:330px;
+  background-color: #EFDC05;
+  border-radius: 50%;
 }
 
 img {
-  size: 50%;
+  width: 30%;
+  height: auto;
+  margin-left: 450px;
 }

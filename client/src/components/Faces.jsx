@@ -16,11 +16,6 @@ var Faces = React.createClass({
     console.log(this)
     var picture = randomisedArray[0].pic;
 
-    // var img = this.props.faces.map(function(faces, index) {
-    //   return <img key={index} value={index}>{this.props.faces.pic}</img>
-    //   console.log(this)
-    // })
-
     return (
       <div>
         {picture}

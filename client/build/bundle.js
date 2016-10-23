@@ -21429,12 +21429,14 @@
 
 	var React = __webpack_require__(1);
 	var Faces = __webpack_require__(173);
+	var Buttons = __webpack_require__(174);
+	var Result = __webpack_require__(175);
 
 	var GameBox = React.createClass({
 	  displayName: 'GameBox',
 
 	  getInitialState: function getInitialState() {
-	    return { faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), stu: false }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), stu: false }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), stu: true }, { id: 4, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), stu: true }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), stu: true }] };
+	    return { faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), name: 'Al' }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Al' }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), name: 'Stu' }, { id: 4, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Stu' }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), name: 'Stu' }] };
 	  },
 
 	  render: function render() {
@@ -21446,7 +21448,9 @@
 	        null,
 	        'GUESS STU!'
 	      ),
-	      React.createElement(Faces, { faces: this.state.faces })
+	      React.createElement(Faces, { faces: this.state.faces }),
+	      React.createElement(Buttons, { faces: this.state.faces }),
+	      React.createElement(Result, null)
 	    );
 	  }
 	});
@@ -21479,11 +21483,6 @@
 	    console.log(this);
 	    var picture = randomisedArray[0].pic;
 
-	    // var img = this.props.faces.map(function(faces, index) {
-	    //   return <img key={index} value={index}>{this.props.faces.pic}</img>
-	    //   console.log(this)
-	    // })
-
 	    return React.createElement(
 	      'div',
 	      null,
@@ -21493,6 +21492,73 @@
 	});
 
 	module.exports = Faces;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Buttons = __webpack_require__(1);
+
+	var Buttons = React.createClass({
+	  displayName: 'Buttons',
+
+	  guessStu: function guessStu(event) {
+	    if (this.props.faces.stu === true) {
+	      return "Well done, it is Stuart!";
+	    } else return null;
+	  },
+
+	  alWho: function alWho(event) {
+	    if (this.props.faces.stu === false) {
+	      return "Correct, this is indeed Alan!";
+	    } else return null;
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'button',
+	        { id: 'stu', onClick: this.guessStu },
+	        'Stu'
+	      ),
+	      React.createElement(
+	        'button',
+	        { id: 'al', onClick: this.alWho },
+	        'Al'
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Buttons;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Result = React.createClass({
+	  displayName: 'Result',
+
+	  render: function render() {
+	    console.log(this);
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement('p', null)
+	    );
+	  }
+	});
+
+	module.exports = Result;
 
 /***/ }
 /******/ ]);
