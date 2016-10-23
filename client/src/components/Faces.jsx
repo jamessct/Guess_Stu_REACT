@@ -13,12 +13,11 @@ var Faces = React.createClass({
 
   render: function() {
     var randomisedArray = this.getRandomFace(this.props.faces);
-    console.log(this)
-    var picture = randomisedArray[0].pic;
+    var focusFace = randomisedArray[0].pic;
 
     return (
       <div>
-        {picture}
+        {focusFace}
       </div>
     )
   }

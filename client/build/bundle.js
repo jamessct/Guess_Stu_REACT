@@ -21429,17 +21429,30 @@
 
 	var React = __webpack_require__(1);
 	var Faces = __webpack_require__(173);
-	var Buttons = __webpack_require__(174);
+	var Buttons = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Buttons.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	var Result = __webpack_require__(175);
 
 	var GameBox = React.createClass({
 	  displayName: 'GameBox',
 
 	  getInitialState: function getInitialState() {
-	    return { faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), name: 'Al' }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Al' }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), name: 'Stu' }, { id: 4, pic: React.createElement('img', { src: '/public/images/Stu2.jpg' }), name: 'Stu' }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), name: 'Stu' }] };
+	    return {
+	      faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), name: 'Al' }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Al' }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), name: 'Stu' }, { id: 4, pic: React.createElement('img', { src: '/public/images/Stu2.jpg' }), name: 'Stu' }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), name: 'Stu' }]
+	    };
+	  },
+
+	  getRandomFace: function getRandomFace(array) {
+	    for (var i = array.length - 1; i > 0; i--) {
+	      var j = Math.floor(Math.random() * (i + 1));
+	      var temp = array[i];
+	      array[i] = array[j];
+	      array[j] = temp;
+	    }
+	    return array;
 	  },
 
 	  render: function render() {
+	    var randomisedArray = this.getRandomFace(this.state.faces);
 	    return React.createElement(
 	      'div',
 	      null,
@@ -21448,9 +21461,8 @@
 	        null,
 	        'GUESS STU!'
 	      ),
-	      React.createElement(Faces, { faces: this.state.faces }),
-	      React.createElement(Buttons, { faces: this.state.faces }),
-	      React.createElement(Result, { faces: this.state.faces })
+	      React.createElement(Faces, { faces: this.state.faces, randomisedArray: this.randomisedArray }),
+	      React.createElement(Buttons, { faces: this.state.faces, randomisedArray: this.randomisedArray })
 	    );
 	  }
 	});
@@ -21480,13 +21492,12 @@
 
 	  render: function render() {
 	    var randomisedArray = this.getRandomFace(this.props.faces);
-	    console.log(this);
-	    var picture = randomisedArray[0].pic;
+	    var focusFace = randomisedArray[0].pic;
 
 	    return React.createElement(
 	      'div',
 	      null,
-	      picture
+	      focusFace
 	    );
 	  }
 	});
@@ -21494,64 +21505,7 @@
 	module.exports = Faces;
 
 /***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var Buttons = __webpack_require__(1);
-
-	var Buttons = React.createClass({
-	  displayName: 'Buttons',
-
-	  guessStu: function guessStu(event) {
-	    if (this.props.faces.name === 'Stu') {
-	      return true;
-	    } else return false;
-	    result('');
-	  },
-
-	  alWho: function alWho(event) {
-	    if (this.props.faces.name === 'Al') {
-	      return true;
-	    } else return false;
-	    result();
-	  },
-
-	  result: function result() {
-	    if (this.guessStu() === true || this.alWho() === true) {
-	      return "Correct! The correct answer is " + this.props.faces.name;
-	    } else return null;
-	  },
-
-	  render: function render() {
-	    console.log(this.result());
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'button',
-	        { id: 'stu', onClick: this.guessStu },
-	        'Stu'
-	      ),
-	      React.createElement(
-	        'button',
-	        { id: 'al', onClick: this.alWho },
-	        'Al'
-	      ),
-	      React.createElement(
-	        'p',
-	        null,
-	        this.result()
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Buttons;
-
-/***/ },
+/* 174 */,
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
