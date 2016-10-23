@@ -21551,13 +21551,14 @@
 	    var guess = event.target.value;
 	    var randomisedArray = this.getRandomFace(this.props.faces);
 	    var focusFace = this.props.randomisedArray[0];
+	    console.log(focusFace.name);
 	    if (guess === focusFace.name) {
 	      var correctAnswer = document.createElement('p');
-	      correctAnswer.innerHTML = "<p>Yes! {focusFace.name} is the correct answer!</p>";
+	      correctAnswer.innerHTML = "<p'yes'>YEP</p>";
 	      var div = document.getElementById('answer');
 	      div.appendChild(correctAnswer);
 	    } else var wrongAnswer = document.createElement('p');
-	    wrongAnswer.innerHTML = "<p>Sorry! The correct answer was {focusFace.name}.</p>";
+	    wrongAnswer.innerHTML = "<p>NOPE</p>";
 	    var div = document.getElementById('answer');
 	    div.appendChild(wrongAnswer);
 	  },

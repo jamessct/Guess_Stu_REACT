@@ -23,4 +23,12 @@ img {
 p {
   color: #D81159;
   font-family: arial;
+  margin-left: 287px;
+  font-size: 40px;
+}
+
+select {
+  margin-left: 565px;
+  margin-top: 25px;
+  background-color: #EFDC05;
 }
