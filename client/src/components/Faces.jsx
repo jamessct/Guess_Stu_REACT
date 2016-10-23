@@ -12,7 +12,7 @@ var Faces = React.createClass({
   },
 
   render: function() {
-    var randomisedArray = getRandomFace(this.props.faces);
+    var randomisedArray = this.getRandomFace(this.props.faces);
     console.log(this)
     var picture = randomisedArray[0].pic;
 

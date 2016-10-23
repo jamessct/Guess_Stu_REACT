@@ -21434,7 +21434,7 @@
 	  displayName: 'GameBox',
 
 	  getInitialState: function getInitialState() {
-	    return { faces: [{ id: 1, pic: "<img src='../images/Al1.png'", stu: false }, { id: 2, pic: "<img src='../images/Al2.png'", stu: false }, { id: 3, pic: "<img src='../images/Stu1.png'", stu: true }, { id: 4, pic: "<img src='../images/Al2.png'", stu: true }, { id: 5, pic: "<img src='../images/Stu3.png'", stu: true }] };
+	    return { faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), stu: false }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), stu: false }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), stu: true }, { id: 4, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), stu: true }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), stu: true }] };
 	  },
 
 	  render: function render() {
@@ -21475,7 +21475,7 @@
 	  },
 
 	  render: function render() {
-	    var randomisedArray = getRandomFace(this.props.faces);
+	    var randomisedArray = this.getRandomFace(this.props.faces);
 	    console.log(this);
 	    var picture = randomisedArray[0].pic;
 
