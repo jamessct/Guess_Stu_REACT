@@ -21429,7 +21429,7 @@
 
 	var React = __webpack_require__(1);
 	var Faces = __webpack_require__(173);
-	var Buttons = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Buttons.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var Buttons = __webpack_require__(174);
 	var Result = __webpack_require__(175);
 
 	var GameBox = React.createClass({
@@ -21461,8 +21461,8 @@
 	        null,
 	        'GUESS STU!'
 	      ),
-	      React.createElement(Faces, { faces: this.state.faces, randomisedArray: this.randomisedArray }),
-	      React.createElement(Buttons, { faces: this.state.faces, randomisedArray: this.randomisedArray })
+	      React.createElement(Faces, { faces: this.state.faces, randomisedArray: randomisedArray }),
+	      React.createElement(Buttons, { faces: this.state.faces, randomisedArray: randomisedArray })
 	    );
 	  }
 	});
@@ -21480,19 +21480,19 @@
 	var Faces = React.createClass({
 	  displayName: 'Faces',
 
-	  getRandomFace: function getRandomFace(array) {
-	    for (var i = array.length - 1; i > 0; i--) {
-	      var j = Math.floor(Math.random() * (i + 1));
-	      var temp = array[i];
-	      array[i] = array[j];
-	      array[j] = temp;
-	    }
-	    return array;
-	  },
+	  // getRandomFace: function(array) {
+	  //   for (var i = array.length - 1; i > 0; i--) {
+	  //     var j = Math.floor(Math.random() * (i + 1));
+	  //     var temp = array[i];
+	  //     array[i] = array[j];
+	  //     array[j] = temp;
+	  //   } 
+	  //   return array;
+	  // },
 
 	  render: function render() {
-	    var randomisedArray = this.getRandomFace(this.props.faces);
-	    var focusFace = randomisedArray[0].pic;
+	    // var randomisedArray = this.getRandomFace(this.props.faces);
+	    var focusFace = this.props.randomisedArray[0].pic;
 
 	    return React.createElement(
 	      'div',
@@ -21505,33 +21505,98 @@
 	module.exports = Faces;
 
 /***/ },
-/* 174 */,
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
 
-	var Result = React.createClass({
-	  displayName: 'Result',
+	var Buttons = React.createClass({
+	  displayName: 'Buttons',
+
+	  // guessStu: function(event) {
+	  //   if(this.props.faces.name === 'Stu') {
+	  //     return true
+	  //   } else 
+	  //   return false;
+	  //   result('')
+	  // },
+
+	  // alWho: function(event) {
+	  //   if(this.props.faces.name === 'Al') {
+	  //     return true
+	  //   } else
+	  //   return false;
+	  //   result();
+	  // },
+
+	  // result: function() {
+	  //   if(this.guessStu() === true || this.alWho() === true) {
+	  //     return ("Correct! The correct answer is " + this.props.faces.name)
+	  //   } else
+	  //   return null;
+	  // },
+	  getRandomFace: function getRandomFace(array) {
+	    for (var i = array.length - 1; i > 0; i--) {
+	      var j = Math.floor(Math.random() * (i + 1));
+	      var temp = array[i];
+	      array[i] = array[j];
+	      array[j] = temp;
+	    }
+	    return array;
+	  },
+
+	  handleChange: function handleChange(event) {
+	    var guess = event.target.value;
+	    var randomisedArray = this.getRandomFace(this.props.faces);
+	    var focusFace = this.props.randomisedArray[0];
+	    if (guess === focusFace.name) {
+	      var correctAnswer = document.createElement('p');
+	      correctAnswer.innerHTML = "<p>Yes! {focusFace.name} is the correct answer!</p>";
+	      var div = document.getElementById('answer');
+	      div.appendChild(correctAnswer);
+	    } else var wrongAnswer = document.createElement('p');
+	    wrongAnswer.innerHTML = "<p>Sorry! The correct answer was {focusFace.name}.</p>";
+	    var div = document.getElementById('answer');
+	    div.appendChild(wrongAnswer);
+	  },
 
 	  render: function render() {
-	    console.log(this);
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
-	        'p',
-	        null,
-	        this.guessStu,
-	        this.alWho
-	      )
+	        'select',
+	        { id: 'answers', defaultValue: 'default', onChange: this.handleChange },
+	        React.createElement(
+	          'option',
+	          { id: 'default' },
+	          'Who is in the picture?'
+	        ),
+	        React.createElement(
+	          'option',
+	          { id: 'al' },
+	          'Al'
+	        ),
+	        React.createElement(
+	          'option',
+	          { id: 'stu' },
+	          'Stu'
+	        )
+	      ),
+	      React.createElement('div', { id: 'answer' })
 	    );
 	  }
 	});
 
-	module.exports = Result;
+	module.exports = Buttons;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 /***/ }
 /******/ ]);

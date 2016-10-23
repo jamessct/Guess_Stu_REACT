@@ -36,16 +36,17 @@ var Buttons = React.createClass({
   handleChange: function(event) {
     var guess = event.target.value;
     var randomisedArray = this.getRandomFace(this.props.faces);
-    var focusFace = randomisedArray[0];
-    console.log(focusFace.name)
-    getResult(guess, focusFace);
-  },
-    
-  getResult: function(guess, focusFace)
+    var focusFace = this.props.randomisedArray[0];
     if(guess === focusFace.name) {
-      return <p>Yes! " {focusFace.name} " is the CORRECT answer!"</p>;
-    } else 
-    return <p>"Nope. This is" {focusFace.name}"."</p>;
+      var correctAnswer = document.createElement('p');
+      correctAnswer.innerHTML = "<p>Yes! {focusFace.name} is the correct answer!</p>";
+      var div = document.getElementById('answer');
+      div.appendChild(correctAnswer);
+    } else
+    var wrongAnswer = document.createElement('p');
+    wrongAnswer.innerHTML = "<p>Sorry! The correct answer was {focusFace.name}.</p>";
+    var div = document.getElementById('answer');
+    div.appendChild(wrongAnswer);
   },
 
   render: function() {
@@ -56,7 +57,7 @@ var Buttons = React.createClass({
           <option id="al">Al</option>
           <option id="stu">Stu</option>
         </select>
-        {getResult}
+        <div id="answer"></div>
       </div>
     )
   }
