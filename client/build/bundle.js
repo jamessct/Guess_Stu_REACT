@@ -21437,9 +21437,11 @@
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      faces: [{ id: 1, pic: React.createElement('img', { src: '/public/images/Al1.jpg' }), name: 'Al' }, { id: 2, pic: React.createElement('img', { src: '/public/images/Al2.jpg' }), name: 'Al' }, { id: 3, pic: React.createElement('img', { src: '/public/images/Stu1.jpg' }), name: 'Stu' }, { id: 4, pic: React.createElement('img', { src: '/public/images/Stu2.jpg' }), name: 'Stu' }, { id: 5, pic: React.createElement('img', { src: '/public/images/Stu3.jpg' }), name: 'Stu' }]
+	      faces: [{ id: 6, pic: React.createElement('img', { src: '/public/images/AlBeard.jpeg' }), name: 'Al' }, { id: 7, pic: React.createElement('img', { src: '/public/images/AlCheek.jpeg' }), name: 'Al' }, { id: 8, pic: React.createElement('img', { src: '/public/images/AlEar.jpeg' }), name: 'Al' }, { id: 9, pic: React.createElement('img', { src: '/public/images/AlEye.jpeg' }), name: 'Al' }, { id: 10, pic: React.createElement('img', { src: '/public/images/AlLips.jpeg' }), name: 'Al' }, { id: 11, pic: React.createElement('img', { src: '/public/images/StuAnonbitofhair.jpeg' }), name: 'Stu' }, { id: 12, pic: React.createElement('img', { src: '/public/images/StuBeard.jpeg' }), name: 'Stu' }, { id: 13, pic: React.createElement('img', { src: '/public/images/StuCheek.jpeg' }), name: 'Stu' }, { id: 14, pic: React.createElement('img', { src: '/public/images/StuEar.jpeg' }), name: 'Stu' }, { id: 15, pic: React.createElement('img', { src: '/public/images/StuHead.jpeg' }), name: 'Stu' }, { id: 16, pic: React.createElement('img', { src: '/public/images/StuNose.jpeg' }), name: 'Stu' }]
 	    };
 	  },
+
+	  // { id: 1, pic: <img src='/public/images/Al1.jpg'></img>, name: 'Al' }, {id: 2, pic: <img src='/public/images/Al2.jpg'></img>, name: 'Al'}, {id: 3, pic: <img src='/public/images/Stu1.jpg'></img>, name: 'Stu'}, {id: 4, pic: <img src='/public/images/Stu2.jpg'></img>, name: 'Stu'}, {id: 5, pic: <img src='/public/images/Stu3.jpg'></img>, name: 'Stu'}, 
 
 	  getRandomFace: function getRandomFace(array) {
 	    for (var i = array.length - 1; i > 0; i--) {
@@ -21461,8 +21463,7 @@
 	        null,
 	        'GUESS STU!'
 	      ),
-	      React.createElement(Faces, { faces: this.state.faces, randomisedArray: randomisedArray }),
-	      React.createElement(Buttons, { faces: this.state.faces, randomisedArray: randomisedArray })
+	      React.createElement(Faces, { faces: this.state.faces, randomisedArray: randomisedArray })
 	    );
 	  }
 	});
@@ -21476,6 +21477,7 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var Buttons = __webpack_require__(174);
 
 	var Faces = React.createClass({
 	  displayName: 'Faces',
@@ -21492,12 +21494,14 @@
 
 	  render: function render() {
 	    // var randomisedArray = this.getRandomFace(this.props.faces);
-	    var focusFace = this.props.randomisedArray[0].pic;
-
+	    var focusFace = this.props.randomisedArray[0];
+	    var picture = focusFace.pic;
+	    console.log(picture);
 	    return React.createElement(
 	      'div',
 	      null,
-	      focusFace
+	      picture,
+	      React.createElement(Buttons, { faces: this.props.faces, focusFace: focusFace })
 	    );
 	  }
 	});
@@ -21537,22 +21541,23 @@
 	  //   } else
 	  //   return null;
 	  // },
-	  getRandomFace: function getRandomFace(array) {
-	    for (var i = array.length - 1; i > 0; i--) {
-	      var j = Math.floor(Math.random() * (i + 1));
-	      var temp = array[i];
-	      array[i] = array[j];
-	      array[j] = temp;
-	    }
-	    return array;
-	  },
+	  // getRandomFace: function(array) {
+	  //   for (var i = array.length - 1; i > 0; i--) {
+	  //     var j = Math.floor(Math.random() * (i + 1));
+	  //     var temp = array[i];
+	  //     array[i] = array[j];
+	  //     array[j] = temp;
+	  //   } 
+	  //   return array;
+	  // },
 
 	  handleChange: function handleChange(event) {
 	    var guess = event.target.value;
-	    var randomisedArray = this.getRandomFace(this.props.faces);
-	    var focusFace = this.props.randomisedArray[0];
-	    console.log(focusFace.name);
-	    if (guess === focusFace.name) {
+	    // var randomisedArray = this.getRandomFace(this.props.faces);
+	    // var focusFace = this.props.randomisedArray[0];
+	    console.log(this.props.focusFace);
+	    console.log(this.props.focusFace.name);
+	    if (guess === this.props.focusFace.name) {
 	      var correctAnswer = document.createElement('p');
 	      correctAnswer.innerHTML = "<p'yes'>YEP</p>";
 	      var div = document.getElementById('answer');

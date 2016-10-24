@@ -23,22 +23,23 @@ var Buttons = React.createClass({
   //   } else
   //   return null;
   // },
-  getRandomFace: function(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    } 
-    return array;
-  },
+  // getRandomFace: function(array) {
+  //   for (var i = array.length - 1; i > 0; i--) {
+  //     var j = Math.floor(Math.random() * (i + 1));
+  //     var temp = array[i];
+  //     array[i] = array[j];
+  //     array[j] = temp;
+  //   } 
+  //   return array;
+  // },
 
   handleChange: function(event) {
     var guess = event.target.value;
-    var randomisedArray = this.getRandomFace(this.props.faces);
-    var focusFace = this.props.randomisedArray[0];
-    console.log(focusFace.name);
-    if(guess === focusFace.name) {
+    // var randomisedArray = this.getRandomFace(this.props.faces);
+    // var focusFace = this.props.randomisedArray[0];
+    console.log(this.props.focusFace)
+    console.log(this.props.focusFace.name);
+    if(guess === this.props.focusFace.name) {
       var correctAnswer = document.createElement('p');
       correctAnswer.innerHTML = "<p'yes'>YEP</p>";
       var div = document.getElementById('answer');

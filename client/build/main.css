@@ -1,5 +1,5 @@
 body {
-  background-image: url('http://i.imgur.com/ITfssQa.jpg');
+  background-image: url('/public/images/Stubackground.jpg');
   background-size: 76px;
 }
 
@@ -21,10 +21,12 @@ img {
 }
 
 p {
-  color: #D81159;
+  color: #EFDC05;
   font-family: arial;
-  margin-left: 287px;
+  margin-left: 400px;
+  margin-right: 400px;
   font-size: 40px;
+  border-radius:30%;
 }
 
 select {
