@@ -20,13 +20,18 @@ img {
   margin-left: 450px;
 }
 
-p {
-  color: #EFDC05;
+#yes {
+  color: green;
   font-family: arial;
-  margin-left: 400px;
-  margin-right: 400px;
   font-size: 40px;
-  border-radius:30%;
+  margin-left: 587px;
+}
+
+#no {
+  color: red;
+  font-family: arial;
+  font-size: 40px;
+  margin-left: 580px;
 }
 
 select {

@@ -5,12 +5,12 @@ var Buttons = React.createClass({
     var guess = event.target.value;
     if(guess === this.props.focusFace.name) {
       var correctAnswer = document.createElement('p');
-      correctAnswer.innerHTML = "<p'yes'>YEP</p>";
+      correctAnswer.innerHTML = "<p id='yes'>YEP</p>";
       var div = document.getElementById('answer');
       div.appendChild(correctAnswer);
     } else
     var wrongAnswer = document.createElement('p');
-    wrongAnswer.innerHTML = "<p>NOPE</p>";
+    wrongAnswer.innerHTML = "<p id='no'>NOPE</p>";
     var div = document.getElementById('answer');
     div.appendChild(wrongAnswer);
   },
