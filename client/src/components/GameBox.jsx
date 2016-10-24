@@ -27,7 +27,7 @@ var GameBox = React.createClass({
     return(
       <div>
         <h1>GUESS STU!</h1>
-        <Faces faces={this.state.faces} randomisedArray={randomisedArray}></Faces>
+        <Faces randomisedArray={randomisedArray}></Faces>
       </div>
     )
   }

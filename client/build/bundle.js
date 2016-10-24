@@ -21463,7 +21463,7 @@
 	        null,
 	        'GUESS STU!'
 	      ),
-	      React.createElement(Faces, { faces: this.state.faces, randomisedArray: randomisedArray })
+	      React.createElement(Faces, { randomisedArray: randomisedArray })
 	    );
 	  }
 	});
@@ -21482,18 +21482,8 @@
 	var Faces = React.createClass({
 	  displayName: 'Faces',
 
-	  // getRandomFace: function(array) {
-	  //   for (var i = array.length - 1; i > 0; i--) {
-	  //     var j = Math.floor(Math.random() * (i + 1));
-	  //     var temp = array[i];
-	  //     array[i] = array[j];
-	  //     array[j] = temp;
-	  //   } 
-	  //   return array;
-	  // },
 
 	  render: function render() {
-	    // var randomisedArray = this.getRandomFace(this.props.faces);
 	    var focusFace = this.props.randomisedArray[0];
 	    var picture = focusFace.pic;
 	    console.log(picture);
@@ -21501,7 +21491,7 @@
 	      'div',
 	      null,
 	      picture,
-	      React.createElement(Buttons, { faces: this.props.faces, focusFace: focusFace })
+	      React.createElement(Buttons, { focusFace: focusFace })
 	    );
 	  }
 	});
@@ -21519,44 +21509,8 @@
 	var Buttons = React.createClass({
 	  displayName: 'Buttons',
 
-	  // guessStu: function(event) {
-	  //   if(this.props.faces.name === 'Stu') {
-	  //     return true
-	  //   } else 
-	  //   return false;
-	  //   result('')
-	  // },
-
-	  // alWho: function(event) {
-	  //   if(this.props.faces.name === 'Al') {
-	  //     return true
-	  //   } else
-	  //   return false;
-	  //   result();
-	  // },
-
-	  // result: function() {
-	  //   if(this.guessStu() === true || this.alWho() === true) {
-	  //     return ("Correct! The correct answer is " + this.props.faces.name)
-	  //   } else
-	  //   return null;
-	  // },
-	  // getRandomFace: function(array) {
-	  //   for (var i = array.length - 1; i > 0; i--) {
-	  //     var j = Math.floor(Math.random() * (i + 1));
-	  //     var temp = array[i];
-	  //     array[i] = array[j];
-	  //     array[j] = temp;
-	  //   } 
-	  //   return array;
-	  // },
-
 	  handleChange: function handleChange(event) {
 	    var guess = event.target.value;
-	    // var randomisedArray = this.getRandomFace(this.props.faces);
-	    // var focusFace = this.props.randomisedArray[0];
-	    console.log(this.props.focusFace);
-	    console.log(this.props.focusFace.name);
 	    if (guess === this.props.focusFace.name) {
 	      var correctAnswer = document.createElement('p');
 	      correctAnswer.innerHTML = "<p'yes'>YEP</p>";
